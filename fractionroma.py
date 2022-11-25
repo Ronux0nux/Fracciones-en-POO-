@@ -54,19 +54,20 @@ def casos(options):
 
 
 ##lets start to make the menu##
-
-num1 = int(input("Enter Numerator 1: "))
-den1 = 0
-while den1 == 0:
-    den1 = int(input("Enter Denominator 1: "))
-    if den1 != 0:
+   
+    num1 = int(input("Enter Numerator 1: "))
+    den1 = 0
+    while den1 != 0:
+        den1 = int(input("Enter Denominator 1: "))
+    if den1 == 0:
         break
+        
     print("Enter a Denominator, cant be zero")
 num2 = int(input("Enter Numerator 2: "))
 den2 = 0
-while den2 == 0:
+while den2 != 0:
     den2 = int(input("Enter Denominator 2: "))
-    if den2 != 0:
+    if den2 == 0:
         break
     print("Again Enter a Denominator, cant be zero")
 

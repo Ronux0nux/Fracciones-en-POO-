@@ -5,77 +5,71 @@ def mcm(m,n):
 
         m = n_o
         n = m_o%n_o
-    return n
-	    
+    return n	
 class Fraction:
+  
+    def __init__(self, num, den):
+        self.num = int(num)
+        self.den = int(den)
+        if den ==0:
+             raise Exception("No usar 0 en el denominador") 
+    def __str__(self):
+     return str(self.num)+ "/" + str(self.den)
+ 
+    def addition (self,frac):
+        num= self.num*frac.den+ self.den*frac.num
+        den= self.den* frac.den
+        minimocomun= mcm(num,den)
+        return Fraction(num//minimocomun, den//minimocomun)
+
+    def rest (self,frac):
+        num= self.num*frac.den - self.den*frac.num
+        den= self.den* frac.den
+        minimocomun = mcm(num,den)
+        return Fraction(num/minimocomun, den/minimocomun)
 	
-	num=0 
-	den=1
-
-	def __init__(self, num, den):
-		self.num = int(num)
-		if den ==0:
-			raise Exception("No usar 0 en el denominador")
-		self.den = int(den)
-
-	def __str__(self):
-		return str(self.num)+ "/" + str(self.den)
+    def multiplication (self,frac):
+        num= self.num * frac.num
+        den= self.den * frac.den
+        return Fraction(num,den)
+    
+    def division (self,frac):
+        num=self.num*frac.den
+        den=self.den*frac.num
+        return Fraction(num,den)
 		
-	
-	def addition (self,otherfrac):
-		num= self.num*otherfrac.den+ self.den*otherfrac.num
-		den= self.den* otherfrac.den
-		mc= mcm(num,den)
-		return Fraction(num//mc, den//mc)
+while True:
+   num1= int(input("El Numerador 1: "))
+   den1= int(input("El Denominador 1: "))
 
-	def rest (self,otherfrac):
-		num= self.num*otherfrac.den - self.den*otherfrac.num
-		den= self.den* otherfrac.den
-		comun = mcm(num,den)
-		return Fraction(num//mc, den//mc)
-	
-	    
-	def multiplication (self,otherfrac):
-		num= self.num * otherfrac.num
-		den= self.deno * otherfrac.den
-		return Fraction(num,den)
+   fract1=Fraction(num1,den1)
+   print("Fraccion 1: ",str(fract1),"\n")
 
-	def division (self,otherfrac):
-		num=self.num*otherfrac.den
-		den=self.den*otherfrac.num
-		return Fraction(num,den)	
-		
+   num2=int(input("El Numerador 2: "))
+   den2=int(input("El Denominador 2: "))
 
-num=int(input("numerador 1: "))
-den=int(input("denominador 1: "))
-
-fract1=Fraction(num,den)
-print("Fraccion 1: ",str(fract1),"\n")
-
-num=int(input("numerador 2: "))
-den=int(input("denominador 2: "))
-
-fract2=Fraction(num,den)
-print("Fraccion 2: ",str(fract2),"\n")
+   fract2=Fraction(num2,den2)
+   print("Fraccion 2: ",str(fract2),"\n")
 
 
-operacion=input("Indique operacion con los simbolos (+, -, *, /): ")
+   operacion=input("Indique operacion con los simbolos (+, -, *, /): ")
 
-if operacion == '+':
-		result= fract1.addition(fract2)
-		print("Fraccion 1 + Fraccion 2 = ",str(result))
+   if operacion == '+':
+       result= fract1.addition(fract2) 
+       print("Fraccion 1 + Fraccion 2 = ",str(result))
 
-elif operacion == '-':
-		result= fract1.rest(fract2)
-		print(" Fraccion 1 - Fraccion 2 = ",str(result))
-
-elif operacion == '*':
-	result= fract1.multiplication(fract2)
-	print("Fraccion 1 * Fraccion 2 = ",str(result))
-
-elif operacion == '/':
-		result= fract1.division(fract2)
-		print("Fraccion 1  / Fraccion 2 = ",str(result))
-
-else:
-	print("Indique una operacion valida...")
+   elif operacion == '-':
+       result= fract1.rest(fract2) 
+       print(" Fraccion 1 - Fraccion 2 = ",str(result))
+    
+   elif operacion == '-':
+       result= fract1.multiplication(fract2) 
+       print(" Fraccion 1 * Fraccion 2 = ",str(result))    
+       
+   elif operacion == '/':
+       result= fract1.division(fract2)
+       print("Fraccion 1  / Fraccion 2 = ",str(result))    
+   else:
+	   print("Indique una operacion valida...")
+   if (input("\n ¿Desea continuar las operaciones (Seleccione 'tecla enter ' para continuar y 'n' para no continuar) \n") == "n"):
+       break
